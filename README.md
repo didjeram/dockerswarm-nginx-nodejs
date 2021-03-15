@@ -166,7 +166,7 @@ webservice
 ### Ejemplo con Docker-Compose
 
 ```shell
-$ git clone https://github.com/didjeram/docker-nginx-loadbalance.git
+$ git clone https://github.com/didjeram/dockerswarm-nginx-nodejs.git
 $ cd docker-nginx-loadbalance
 $ cd node-app
 $ docker build . -t didjeram-app:latest

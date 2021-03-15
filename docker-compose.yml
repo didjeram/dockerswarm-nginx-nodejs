@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+    nginx-loadbalancer:
+        image: jwilder/nginx-proxy:latest
+        volumes:
+            - //var/run/docker.sock:/tmp/docker.sock:ro
+        environment:
+            - DEFAULT_HOST=proxy.example
+        ports:
+            - "80:80"   
+    web-app:
+        image: didjeram/didjeram-app:1
+        build:
+          context: ./node-app
+          dockerfile: Dockerfile
+        environment:
+            - VIRTUAL_HOST=proxy.example
+        ports:
+            - "8080"
+        deploy:
+            mode: replicated
+            replicas: 3
+        
